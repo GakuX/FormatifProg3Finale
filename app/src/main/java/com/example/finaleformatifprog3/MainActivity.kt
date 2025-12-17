@@ -98,8 +98,8 @@ class MainActivity : ComponentActivity() {
                     TopAppBar(
                         title = {
                             Text(
-                                text = "Mise en Page",
-                                textAlign = TextAlign.Center,
+                                text = "yo mama",
+
                                 modifier = Modifier.fillMaxWidth()
                             )
                         }
@@ -142,7 +142,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     // kept for compatibility; do not create a NavController here to avoid confusion
-   RowExample()
+   yomama(modifier)
 }
 
 
@@ -471,6 +471,96 @@ fun RowExample() {
 //        Text(text = "left")
     }
 }
+
+
+
+@Composable
+
+fun yomama(modifier: Modifier = Modifier) {
+
+
+    Column(modifier = Modifier.fillMaxSize()) {
+
+
+
+
+
+            Row(modifier = Modifier.fillMaxWidth().weight(1f)) {
+
+                Box(modifier = Modifier.weight(4f).fillMaxHeight().background(Color.Blue))
+
+                Box(modifier = Modifier.weight(1f).fillMaxHeight().background(Color.Black))
+            }
+
+
+
+
+
+
+
+
+
+
+        Box(modifier = Modifier.fillMaxWidth().weight(2f),   contentAlignment = Alignment.Center) {
+
+
+
+            Button(onClick = {}, modifier = Modifier.fillMaxWidth().padding(15.dp)) {
+                Text("Coucou")
+            }}
+
+
+    }
+
+
+
+//    Column(modifier = modifier.fillMaxSize()) {
+//
+//        // 🔹 TOP COLORED ROW (1/3)
+//        Row(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .weight(1f)
+//        ) {
+//
+//            Box(
+//                modifier = Modifier
+//                    .weight(4f)
+//                    .fillMaxHeight()
+//                    .background(Color.Blue)
+//            )
+//
+//            Box(
+//                modifier = Modifier
+//                    .weight(1f)
+//                    .fillMaxHeight()
+//                    .background(Color.Black)
+//            )
+//        }
+//
+//        // 🔹 BOTTOM AREA (2/3)
+//        Box(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .weight(2f),
+//            contentAlignment = Alignment.Center
+//        ) {
+//
+//            Button(
+//                onClick = {},
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(15.dp)
+//            ) {
+//                Text("Coucou")
+//            }
+//        }
+//    }
+
+
+
+}
+
 
 
 //        Text(
