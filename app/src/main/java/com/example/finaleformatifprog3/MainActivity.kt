@@ -4,6 +4,7 @@ package com.example.finaleformatifprog3
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Space
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -85,7 +86,7 @@ import com.example.finaleformatifprog3.ui.theme.FinaleFormatifProg3Theme
 //}
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalMaterial3Api::class) //important?
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -104,24 +105,34 @@ class MainActivity : ComponentActivity() {
                         }
                     )
                 }) { innerPadding ->
-                    NavHost(
-                        navController = navController,
-                        startDestination = "list",
-                        modifier = Modifier.padding(innerPadding)
-                    ) {
-                        composable("list") {
-                            InterfaceListe(navController)
-                        }
 
-                        composable(
-                            route = "detail/{name}",
-                            arguments = listOf(navArgument("name") { type = NavType.StringType })
-                        ) { backStackEntry ->
-                            val encoded = backStackEntry.arguments?.getString("name")
-                            val name = encoded?.let { Uri.decode(it) } ?: ""
-                            DetailScreen(name = name, navController = navController)
-                        }
-                    }
+
+
+
+                    Greeting(
+                        name = "Android",
+                        modifier = Modifier.padding(innerPadding)
+                   )
+
+
+//                    NavHost(
+//                        navController = navController,
+//                        startDestination = "list",
+//                        modifier = Modifier.padding(innerPadding)
+//                    ) {
+//                        composable("list") {
+//                            InterfaceListe(navController)
+//                        }
+//
+//                        composable(
+//                            route = "detail/{name}",
+//                            arguments = listOf(navArgument("name") { type = NavType.StringType })
+//                        ) { backStackEntry ->
+//                            val encoded = backStackEntry.arguments?.getString("name")
+//                            val name = encoded?.let { Uri.decode(it) } ?: ""
+//                            DetailScreen(name = name, navController = navController)
+//                        }
+//                    }
                 }
             }
         }
@@ -131,7 +142,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     // kept for compatibility; do not create a NavController here to avoid confusion
-    ImagesVersActivites()
+   RowExample()
 }
 
 
@@ -165,7 +176,7 @@ fun Final(modifier: Modifier = Modifier) {
 
 
 @Composable
-fun ExamenFinal(modifier: Modifier = Modifier) {
+fun ExamenFinalw(modifier: Modifier = Modifier) {
     Column(modifier = Modifier.fillMaxSize()) {
         Button(onClick = { }, modifier = Modifier.fillMaxWidth())
         { Text("Popopo !") }
@@ -330,3 +341,154 @@ fun DetailScreen(name: String, navController: NavController) {
         }
     }
 }
+
+
+@Composable
+fun ExamenFinal(modifier: Modifier = Modifier) {
+    Column(modifier = Modifier.fillMaxSize()) {
+
+        Spacer(modifier = Modifier.height(100.dp))
+
+        Button(onClick = { }, modifier = Modifier.fillMaxWidth())
+        { Text("Popopo !") }
+
+
+        Spacer(modifier = Modifier.height(500.dp))
+
+
+
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .height(200.dp)
+                    .background(Color.Blue)
+            ) { }
+            Text(
+                text = "Plop plop plop",
+                modifier = Modifier
+                    .weight(2f)
+                    .padding(8.dp)
+            )
+        }
+    }
+}
+
+
+@Composable
+fun AlignmentArrangementDemo() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.LightGray).fillMaxSize(),
+
+        // VERTICAL ARRANGEMENT (top → bottom)
+        verticalArrangement = Arrangement.SpaceEvenly,
+//        horizontalArrangement = Arrangement.SpaceBetween
+        // HORIZONTAL ALIGNMENT (left / center / right)
+//        horizontalAlignment = Alignment.CenterHorizontally
+
+
+    ) {
+        Row(modifier = Modifier.fillMaxWidth()) {
+
+
+            Text(
+                text = "Top",
+                modifier = Modifier.background(Color.Red).padding(20.dp)
+            )
+        }
+
+
+        Text(
+            text = "Middle",
+            modifier = Modifier.background(Color.Green)  //.fillMaxHeight()
+        )
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.End
+        ) {
+            Text(
+                text = "Bottom",
+                modifier = Modifier.padding(end = 40.dp).background(Color.Blue)
+            )
+        }
+    }
+}
+
+
+//Column(
+//    verticalArrangement = ...
+//    horizontalAlignment = ...
+//)
+
+//Row(
+//horizontalArrangement = ...
+//verticalAlignment = ...
+//)
+
+
+
+
+@Composable
+fun RowExample() {
+    Row(
+        modifier = Modifier
+            .fillMaxSize()
+            .height(100.dp)
+            .background(Color.Yellow)
+        ,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+
+        Column(modifier = Modifier.fillMaxHeight().weight(1f),
+            verticalArrangement = Arrangement.SpaceEvenly) {
+
+            Text(text = "left", modifier = Modifier.background(Color.Red))
+            Text(text = "left")
+            Text(text = "left")
+            Text(text = "left")
+        }
+
+        Column(modifier = Modifier.fillMaxWidth().weight(1f).padding(start = 120.dp).padding(bottom = 400.dp)) {
+
+            Text(text = "left", modifier = Modifier.padding(bottom = 100.dp).background(Color.Blue), color = Color.Red)
+            Text(text = "left")
+            Text(text = "left")
+            Text(text = "left")
+            Text(text = "left")
+            Text(text = "left")
+        }
+
+        Spacer(modifier = Modifier.padding(top = 300.dp))
+
+
+
+
+//        Text(text = "left")
+//        Text(text = "left")
+    }
+}
+
+
+//        Text(
+//            text = "Left",
+//            modifier = Modifier
+//                .padding(start = 8.dp)
+//                .background(Color.Red)
+//        )
+//
+//        Text(
+//            text = "Center",
+//            modifier = Modifier
+//                .background(Color.Green)
+//        )
+//
+//        Text(
+//            text = "Right",
+//            modifier = Modifier
+//                .padding(end = 8.dp)
+//                .background(Color.Blue)
+//        )
