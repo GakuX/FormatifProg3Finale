@@ -142,7 +142,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     // kept for compatibility; do not create a NavController here to avoid confusion
-   yomama(modifier)
+   yomama()
 }
 
 
@@ -501,7 +501,7 @@ fun yomama(modifier: Modifier = Modifier) {
 
 
 
-        Box(modifier = Modifier.fillMaxWidth().weight(2f),   contentAlignment = Alignment.Center) {
+        Row(modifier = Modifier.fillMaxWidth().weight(2f).padding(top = 200.dp), horizontalArrangement = Arrangement.Center   ) {
 
 
 
